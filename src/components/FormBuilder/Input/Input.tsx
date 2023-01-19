@@ -21,7 +21,7 @@ const Input = (props: InputProps) => {
         {...(props.inputProps ?? {})}
       />
       {props.error ? (
-        <span className="label-text text-error">{props.error}</span>
+        <div className="label-text text-error">{props.error}</div>
       ) : null}
     </div>
   );

@@ -10,26 +10,26 @@ type FormProps = {
 };
 
 const Form = ({ defaultValues, schema, onSubmit, children }: FormProps) => {
-  const methods = useForm({
+  const { handleSubmit, register } = useForm({
     defaultValues,
     resolver: zodResolver(schema),
   });
 
-  const handleSubmit = methods.handleSubmit;
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {React.Children.map(children, (child) => {
-        return child.props.name
-          ? React.createElement(child.type, {
-              ...{
-                ...child.props,
-                register: methods.register,
-                key: child.props.name,
-              },
-            })
-          : child;
-      })}
+      {Array.isArray(children)
+        ? children.map((child) => {
+            return child.props.name
+              ? React.createElement(child.type, {
+                  ...{
+                    ...child.props,
+                    register,
+                    key: child.props.name,
+                  },
+                })
+              : child;
+          })
+        : children}
     </form>
   );
 };
