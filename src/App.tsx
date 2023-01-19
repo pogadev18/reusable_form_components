@@ -1,9 +1,11 @@
+import { ChangeEvent, SyntheticEvent } from "react";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import FormControl from "./components/FormBuilder/FormControl";
-
 import { SignInFormSchema, SignInValues } from "./schema";
+import { PETS } from "./constants";
 
 function App() {
   const {
@@ -20,6 +22,11 @@ function App() {
 
   const onSubmitReady = (data: SignInValues) => {
     console.log(data);
+  };
+
+  // in case you want to do something with the selected value
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value);
   };
 
   return (
@@ -53,6 +60,15 @@ function App() {
           id="description"
           label="Description"
           error={errors.description?.message}
+        />
+
+        <FormControl
+          inputProps={(register("pet"), { onChange: handleSelectChange })}
+          control="select"
+          id="animal"
+          label="Choose pet"
+          selectOptions={PETS}
+          error={errors.pet?.message}
         />
         <button
           type="submit"

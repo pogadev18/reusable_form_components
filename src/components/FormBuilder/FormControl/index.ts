@@ -1,3 +1,3 @@
-import FormController from "./FormControl";
+import FormControl from "./FormControl";
 
-export default FormController;
+export default FormControl;

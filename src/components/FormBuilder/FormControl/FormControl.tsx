@@ -2,6 +2,7 @@ import type { FormControl } from "@/types";
 
 import Input from "../Input";
 import Textarea from "../Textarea";
+import Select from "../Select";
 
 type FormControlProps = FormControl & {
   control: "input" | "textarea" | "select" | "radio" | "checkbox" | "date";
@@ -15,6 +16,7 @@ const FormControl = ({ control, ...rest }: FormControlProps) => {
     case "textarea":
       return <Textarea {...rest} />;
     case "select":
+      return <Select {...rest} />;
     case "radio":
     case "checkbox":
     case "date":
