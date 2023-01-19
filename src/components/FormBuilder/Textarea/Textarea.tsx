@@ -3,14 +3,15 @@ import type { FormControl } from "@/types";
 import ErrorMessage from "../ErrorMessage";
 import Label from "../Label";
 
-const Input = (props: FormControl) => {
+const Textarea = (props: FormControl) => {
   return (
     <div className="form-control w-full max-w-xs">
       <Label id={props.id} label={props.label} />
-      <input
+      <textarea
         className="border border-gray-700 p-2"
+        rows={10} // make this as props if needed
+        cols={50} // make this as props if needed
         id={props.id}
-        type={props.type ?? "text"}
         {...(props.inputProps ?? {})}
       />
       <ErrorMessage error={props.error} />
@@ -18,4 +19,4 @@ const Input = (props: FormControl) => {
   );
 };
 
-export default Input;
+export default Textarea;

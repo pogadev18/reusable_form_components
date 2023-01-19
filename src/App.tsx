@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import FormController from "./components/FormBuilder/FormController";
+import FormControl from "./components/FormBuilder/FormControl";
 
 import { SignInFormSchema, SignInValues } from "./schema";
 
@@ -13,6 +13,9 @@ function App() {
     formState: { errors, isSubmitting },
   } = useForm<SignInValues>({
     resolver: zodResolver(SignInFormSchema),
+    defaultValues: {
+      email: "test@test.com",
+    },
   });
 
   const onSubmitReady = (data: SignInValues) => {
@@ -21,23 +24,35 @@ function App() {
 
   return (
     <div className="p-10">
-      <form onSubmit={handleSubmit(onSubmitReady)}>
-        <FormController
+      <form
+        onSubmit={handleSubmit(onSubmitReady)}
+        className="flex flex-col gap-5"
+      >
+        <FormControl
+          inputProps={register("email")}
+          // inputProps={(register("email"), { disabled: true })} -> with multiple input props
           control="input"
           type="email"
           id="email"
           label="Email"
-          inputProps={register("email")}
           error={errors.email?.message}
         />
 
-        <FormController
+        <FormControl
           inputProps={register("name")}
           control="input"
           type="text"
           id="name"
           label="Name"
           error={errors.name?.message}
+        />
+
+        <FormControl
+          inputProps={register("description")}
+          control="textarea"
+          id="description"
+          label="Description"
+          error={errors.description?.message}
         />
         <button
           type="submit"
