@@ -12,6 +12,7 @@ function App() {
     register,
     handleSubmit,
     setError,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<SignInValues>({
     resolver: zodResolver(SignInFormSchema),
@@ -63,13 +64,23 @@ function App() {
         />
 
         <FormControl
-          inputProps={(register("pet"), { onChange: handleSelectChange })}
+          inputProps={register("pet")}
           control="select"
           id="animal"
           label="Choose pet"
           selectOptions={PETS}
           error={errors.pet?.message}
         />
+
+        {/* <FormControl
+          inputProps={register("category")}
+          control="3rdPartySelect"
+          control3rdParty={control}
+          id="animal"
+          label="Choose pet"
+          selectOptions={PETS}
+          error={errors.pet?.message}
+        /> */}
         <button
           type="submit"
           className="bg-purple-500 text-white p-3 rounded-md w-40 my-5"

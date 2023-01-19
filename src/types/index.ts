@@ -1,4 +1,5 @@
 import { ChangeEvent, RefCallback, SyntheticEvent } from "react";
+import { Control } from "react-hook-form";
 
 // from react-hook-form types
 export type InputProps = {
