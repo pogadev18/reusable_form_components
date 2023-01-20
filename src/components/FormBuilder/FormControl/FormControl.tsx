@@ -3,7 +3,7 @@ import type { FormControl } from "@/types";
 import Input from "../Input";
 import Textarea from "../Textarea";
 // import DefaultSelect from "../DefaultSelect"; // if needed is ready to be used
-import SelectInput from "../Select";
+import Select from "../Select";
 import RadioButtons from "../RadioButtons";
 import Checkbox from "../Checkbox";
 
@@ -21,7 +21,7 @@ const FormControl = ({ control, ...rest }: FormControlProps) => {
     case "textarea":
       return <Textarea {...rest} />;
     case "select": // 3rd party react-select
-      return <SelectInput {...rest} />;
+      return <Select {...rest} />;
     case "radio":
       return <RadioButtons {...rest} />;
     case "checkbox":

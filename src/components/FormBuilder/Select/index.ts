@@ -1,3 +1,3 @@
-import ReactSelect from "./ReactSelect";
+import ReactSelect from "./Select";
 
 export default ReactSelect;
