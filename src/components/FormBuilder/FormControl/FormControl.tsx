@@ -11,6 +11,8 @@ type FormControlProps = FormControl & {
   control: "input" | "textarea" | "select" | "radio" | "checkbox" | "date";
 };
 
+// TODO: build more components (i.e: file upload, 3rd parties)
+
 // decides what field to render based on the control prop
 const FormControl = ({ control, ...rest }: FormControlProps) => {
   switch (control) {

@@ -7,16 +7,18 @@ import FormControl from "./components/FormBuilder/FormControl";
 import { TestFormSchema, TestValues } from "./schema";
 import { PETS, COLORS, NUMBER_OF_LEGS, SUPER_POWERS } from "./constants";
 
+// TODO: reiterate entrie code and refactor where needed
+
 function App() {
   const {
     register,
     handleSubmit,
-    setError,
     control,
     formState: { errors },
   } = useForm<TestValues>({
     resolver: zodResolver(TestFormSchema),
     defaultValues: {
+      // can add more default values here
       email: "test@test.com",
     },
   });
@@ -42,24 +44,75 @@ function App() {
         />
 
         <hr />
+        <section className="flex gap-4 items-center mb-5">
+          <div>
+            <FormControl
+              inputProps={{ ...register("date"), name: "date" }}
+              control="input"
+              type="date"
+              id="date"
+              label="Date"
+              error={errors.date?.message}
+            />
+          </div>
 
-        <FormControl
-          inputProps={{ ...register("date"), name: "date" }}
-          control="input"
-          type="date"
-          id="date"
-          label="Date"
-          error={errors.date?.message}
-        />
+          <div>
+            <FormControl
+              inputProps={{ ...register("name"), name: "name" }}
+              control="input"
+              type="text"
+              id="name"
+              label="Pet Name"
+              error={errors.name?.message}
+            />
+          </div>
+        </section>
 
-        <FormControl
-          inputProps={{ ...register("name"), name: "name" }}
-          control="input"
-          type="text"
-          id="name"
-          label="Pet Name"
-          error={errors.name?.message}
-        />
+        <section className="flex gap-4 items-center mb-5">
+          <FormControl
+            inputProps={{
+              ...register("pet"),
+              name: "pet",
+            }}
+            control="select"
+            reactHookFormControl={control}
+            id="animal"
+            label="Choose species (single select)"
+            options={PETS}
+            error={errors.pet?.message}
+          />
+
+          <FormControl
+            inputProps={{ ...register("color"), name: "color" }}
+            control="select"
+            reactHookFormControl={control}
+            id="color"
+            label="Choose a color (multi select)"
+            options={COLORS}
+            isMultiSelect
+            error={errors.color?.message}
+          />
+        </section>
+
+        <section className="flex gap-4 items-center">
+          <FormControl
+            inputProps={register("numberOfLegs")}
+            control="radio"
+            id="numberOfLegs"
+            label="Choose number of legs"
+            options={NUMBER_OF_LEGS}
+            error={errors.numberOfLegs?.message}
+          />
+
+          <FormControl
+            inputProps={register("superpowers")}
+            control="checkbox"
+            id="superpowers"
+            label="Choose superpowers"
+            options={SUPER_POWERS}
+            error={errors.superpowers?.message}
+          />
+        </section>
 
         <FormControl
           control="textarea"
@@ -67,48 +120,6 @@ function App() {
           id="description"
           label="Description"
           error={errors.description?.message}
-        />
-
-        <FormControl
-          inputProps={{
-            ...register("pet"),
-            name: "pet",
-          }}
-          control="select"
-          reactHookFormControl={control}
-          id="animal"
-          label="Choose species (single select)"
-          options={PETS}
-          error={errors.pet?.message}
-        />
-
-        <FormControl
-          inputProps={{ ...register("color"), name: "color" }}
-          control="select"
-          reactHookFormControl={control}
-          id="color"
-          label="Choose a color (multi select)"
-          options={COLORS}
-          isMultiSelect
-          error={errors.color?.message}
-        />
-
-        <FormControl
-          inputProps={register("numberOfLegs")}
-          control="radio"
-          id="numberOfLegs"
-          label="Choose number of legs"
-          options={NUMBER_OF_LEGS}
-          error={errors.numberOfLegs?.message}
-        />
-
-        <FormControl
-          inputProps={register("superpowers")}
-          control="checkbox"
-          id="superpowers"
-          label="Choose superpowers"
-          options={SUPER_POWERS}
-          error={errors.superpowers?.message}
         />
 
         <button
