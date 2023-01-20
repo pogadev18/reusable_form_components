@@ -4,10 +4,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import FormControl from "./components/FormBuilder/FormControl";
-import { TestFormSchema, TestValues } from "./schema";
+import { PetBuilderFormSchema, PetBuilderValues } from "./schema";
 import { PETS, COLORS, NUMBER_OF_LEGS, SUPER_POWERS } from "./constants";
 
 // TODO: reiterate entrie code and refactor where needed
+// TODO: add some (basic) styling
 
 function App() {
   const {
@@ -15,15 +16,15 @@ function App() {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<TestValues>({
-    resolver: zodResolver(TestFormSchema),
+  } = useForm<PetBuilderValues>({
+    resolver: zodResolver(PetBuilderFormSchema),
     defaultValues: {
       // can add more default values here
       email: "test@test.com",
     },
   });
 
-  const onSubmitReady = (data: TestValues) => {
+  const onSubmitReady = (data: PetBuilderValues) => {
     console.log(data);
   };
 

@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const TestFormSchema = z.object({
+export const PetBuilderFormSchema = z.object({
   email: z.string().email(),
   date: z.string().min(1, { message: "Select date" }),
   name: z
@@ -19,4 +19,4 @@ export const TestFormSchema = z.object({
     .min(2, { message: "Select at least 2 superpowers" }),
 });
 
-export type TestValues = z.infer<typeof TestFormSchema>;
+export type PetBuilderValues = z.infer<typeof PetBuilderFormSchema>;
