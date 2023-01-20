@@ -13,7 +13,7 @@ function App() {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<PetBuilderValues>({
     resolver: zodResolver(PetBuilderFormSchema),
     defaultValues: {
@@ -122,10 +122,11 @@ function App() {
         />
 
         <button
+          disabled={isSubmitting}
           type="submit"
-          className="bg-purple-500 hover:bg-purple-700 text-white p-3 rounded-md w-40 my-5"
+          className="bg-purple-500 hover:bg-purple-700 text-white p-3 rounded-md w-40 my-5 disabled:bg-gray-500"
         >
-          submit
+          {isSubmitting ? "creating your pet" : "submit"}
         </button>
       </form>
     </div>
