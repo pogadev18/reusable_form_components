@@ -3,8 +3,8 @@ import { RefCallback } from "react";
 
 // from react-hook-form types
 export type InputProps = {
-  onChange?: (e: any) => void;
-  onBlur?: (e: any) => void;
+  onChange?: (e: any) => void; // todo: maybe type the events as well
+  onBlur?: (e: any) => void; // todo: maybe type the events as well
   ref?: RefCallback<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>;
   name?: string;
   min?: string | number;
@@ -23,6 +23,6 @@ export type FormControl = {
   inputProps?: InputProps;
   reactHookFormControl?: any; // todo: type this
   type?: string;
-  selectOptions?: { value: string; label: string }[]; // adjust types based on project / business -> might not always be [{value: 'dog', label: 'Dog'}] (as an example)
+  options?: { value: string | number; label: string }[]; // adjust types based on project / business -> might not always be [{value: 'dog', label: 'Dog'}] (as an example)
   isMultiSelect?: boolean;
 };

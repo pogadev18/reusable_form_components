@@ -3,7 +3,7 @@ import type { FormControl } from "@/types";
 import ErrorMessage from "../ErrorMessage";
 import Label from "../Label";
 
-const Select = (props: FormControl) => {
+const DefaultSelect = (props: FormControl) => {
   return (
     <div className="form-control w-full max-w-xs">
       <Label id={props.id} label={props.label} />
@@ -24,4 +24,4 @@ const Select = (props: FormControl) => {
   );
 };
 
-export default Select;
+export default DefaultSelect;

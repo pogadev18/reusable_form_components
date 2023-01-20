@@ -25,11 +25,9 @@ const SelectInput = (props: FormControl) => {
             <Select
               id={props.id}
               isMulti={props.isMultiSelect ?? false}
-              value={props.selectOptions?.find(
-                (option) => option.value === value
-              )}
-              options={props.selectOptions}
-              // @ts-ignore -> typescript is yelling here but it's working (couldn't find a solution yet)
+              value={props.options?.find((option) => option.value === value)}
+              options={props.options}
+              // @ts-ignore -> typescript is yelling here but it's working (couldn't find a solution yet, TODO: fix this)
               onChange={
                 props.isMultiSelect ? handleMultiOptions : handleSingleOption
               }
