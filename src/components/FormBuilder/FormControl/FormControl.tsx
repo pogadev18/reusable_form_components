@@ -2,18 +2,11 @@ import type { FormControl } from "@/types";
 
 import Input from "../Input";
 import Textarea from "../Textarea";
-import Select from "../Select";
-import ReactSelect from "../ReactSelect";
+// import Select from "../NativeSelect"; // if needed is ready to be used
+import SelectInput from "../Select";
 
 type FormControlProps = FormControl & {
-  control:
-    | "input"
-    | "textarea"
-    | "select"
-    | "radio"
-    | "checkbox"
-    | "date"
-    | "3rdPartySelect";
+  control: "input" | "textarea" | "select" | "radio" | "checkbox" | "date";
 };
 
 // decides what field to render based on the control prop
@@ -24,9 +17,7 @@ const FormControl = ({ control, ...rest }: FormControlProps) => {
     case "textarea":
       return <Textarea {...rest} />;
     case "select":
-      return <Select {...rest} />;
-    case "3rdPartySelect":
-      return <ReactSelect {...rest} />;
+      return <SelectInput {...rest} />;
     case "radio":
     case "checkbox":
     case "date":

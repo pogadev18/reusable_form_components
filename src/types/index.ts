@@ -1,10 +1,10 @@
-import { ChangeEvent, RefCallback, SyntheticEvent } from "react";
-import { Control } from "react-hook-form";
+import { RefCallback } from "react";
+// import { Control } from "react-hook-form";
 
 // from react-hook-form types
 export type InputProps = {
-  onChange?: (ev: ChangeEvent<HTMLSelectElement>) => void;
-  onBlur?: (ev: SyntheticEvent) => void;
+  onChange?: (e: any) => void;
+  onBlur?: (e: any) => void;
   ref?: RefCallback<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>;
   name?: string;
   min?: string | number;
@@ -21,6 +21,8 @@ export type FormControl = {
   label: string;
   error?: string;
   inputProps?: InputProps;
+  reactHookFormControl?: any; // todo: type this
   type?: string;
   selectOptions?: { value: string; label: string }[]; // adjust types based on project / business -> might not always be [{value: 'dog', label: 'Dog'}] (as an example)
+  isMultiSelect?: boolean;
 };
